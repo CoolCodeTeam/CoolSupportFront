@@ -46,3 +46,19 @@
 .hidden {
     display : none;
 }
+
+.leftColumn{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 0 0 auto;
+    width: 35%;
+}
+
+.rightColumn{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 0 0 auto;
+    width: 65%;
+}
