@@ -8,7 +8,7 @@ function getSupportChat() {
 
 function userWebsocket(chatId) {
 
-    const websocketConn = new WebSocket(`ws://${backend}${backendPort}/support/chats/${chatId}/notifications`);
+    const websocketConn = new WebSocket(`ws://${backend}${backendPort}/chats/${chatId}/notifications`);
     data.addUserSocketConn(websocketConn);
 
     websocketConn.onopen = () => {

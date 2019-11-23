@@ -11,6 +11,7 @@ const {connection} = settings;
 import './components/main.css';
 import mainPageView from "./views/mainPageView";
 import ComponentsStorage from "./entities/ComponentsStorage";
+import chatView from "./views/chatView";
 
 const application = document.getElementById('application');
 const baseBlock = document.createElement('div');

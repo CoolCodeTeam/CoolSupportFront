@@ -1,7 +1,6 @@
 import {sendingMessage, deletingMessage, editingMessage} from "../backendDataFetchers/messagesInteraction";
 import {componentsStorage, data, bus} from "../main";
 import {keys} from "../constants/config";
-import currentDate from "../modules/currentDate";
 
 
 

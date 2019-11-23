@@ -9,14 +9,14 @@ import ChatMessageComponent from "../../Message/ChatMessageComponent";
 
 class TypingBlockComponent extends BaseComponent {
 
-    contentListRootSelector = '.msgwindow-container__msgwindow';
+    contentListRootSelector = '.support-msgwindow-container__support-msgwindow';
 
     getMessageInputData() {
-        return this._parent.querySelector('.input__text').value;
+        return this._parent.querySelector('.support-input__text').value;
     }
 
     setMessageInputData(inputData) {
-        this._parent.querySelector('.input__text').value = inputData;
+        this._parent.querySelector('.support-input__text').value = inputData;
     }
 
     renderMessage(message) {

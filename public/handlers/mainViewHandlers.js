@@ -4,22 +4,22 @@ import {sendingMessage} from "../backendDataFetchers/messagesInteraction";
 
 function chooseSendMessageEventSupport() {
     event.preventDefault();
-    sendMessageEvent();
+    sendMessageEventSupport();
 }
 
 function createSendMessageBtnHndlrSupport() {
-    const sendBtn = document.querySelectorAll(".input__icon-container__icon")[1];
-    sendBtn.addEventListener('click', chooseSendMessageEvent);
+    const sendBtn = document.querySelectorAll(".support-input__icon-container__icon")[1];
+    sendBtn.addEventListener('click', chooseSendMessageEventSupport);
 }
 
 function createMessageInputHndlrSupport() {
-    const messageInput = document.querySelector(".input__text");
+    const messageInput = document.querySelector(".support-input__text");
     messageInput.addEventListener('keypress', function (event) {
         if (event.which === keys.ENTER) {
-            chooseSendMessageEvent(event);
+            chooseSendMessageEventSupport(event);
         }
     });
-    messageInput.addEventListener('input', growInput.bind(null, messageInput));
+    messageInput.addEventListener('input', growInputSupport.bind(null, messageInput));
 
 }
 
@@ -35,11 +35,13 @@ async function sendMessageEventSupport() {
         console.log(`new message : ${text}`);
         mainPage.setMessageInputData('');
         try {
-            const messageId = await sendingMessage(text, date.getDate(), data.getCurrentChatId());
+            const messageId = await sendingMessage(text, '', data.getCurrentChatId());
         } catch (error) {
 
         }
 
     }
-    componentsStorage.setChatBlock(chatBlock);
+    componentsStorage.setMainPageColumn(mainPage);
 }
+
+export {createSendMessageBtnHndlrSupport,createMessageInputHndlrSupport }

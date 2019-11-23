@@ -1,5 +1,4 @@
-import BaseComponent from "../../baseComponent";
-import {createVisibleSettingsMessageBlock} from "../../../handlers/chatViewHandlers";
+import BaseComponent from "../baseComponent";
 
 const rightMsg = require('./msgRight.pug');
 const leftMsg = require('./msgLeft.pug');

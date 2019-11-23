@@ -1,6 +1,5 @@
 import BaseView from './baseView';
 
-import {createSearchInputHndlr} from "../handlers/searchFormHandlers";
 import {data, bus, router, promiseMaker, componentsStorage, appLocalStorage} from "../main";
 import {chooseChat, creatingChats, fetchUserInfo} from "../backendDataFetchers/websockets";
 import ChatsColumnComponent from "../components/ChatsColumn/ChatsColumnComponent";
@@ -18,7 +17,6 @@ import {
 	createWrkspaceBlockExpandHndlr,
 	createWrkspaceBlockHndlr
 } from "../handlers/chatsBlockHandlers";
-import {saveUserPhoto} from "../handlers/photosHandlers";
 import {getCurrentChatInfo} from "../backendDataFetchers/gettingInfo";
 import {checkLogin} from "../backendDataFetchers/auth";
 

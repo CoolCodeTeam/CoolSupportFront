@@ -1,4 +1,4 @@
-.msgwindow-container {
+.support-msgwindow-container {
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
@@ -8,13 +8,13 @@
     width: 100%;
 }
 
-.msgwindow-container__style {
+.support-msgwindow-container__style {
     border-radius: 10px;
     background-color: var(--global-msgwindow-container-color);
 }
 
 
-.msgwindow-container__msgwindow {
+.support-msgwindow-container__support-msgwindow {
     flex: 0 0 auto;
     flex-direction: column;
     justify-content: flex-end;
@@ -27,21 +27,21 @@
     max-height: 95%;
 }
 
-.msgwindow-container__msgwindow_style {
+.support-msgwindow-container__support-msgwindow_style {
     background-color: transparent;
 }
 
-.msgwindow-container__msgwindow::-webkit-scrollbar {
+.support-msgwindow-container__support-msgwindow::-webkit-scrollbar {
     width: 7px;
     background-color: transparent;
 }
 
-.msgwindow-container__msgwindow::-webkit-scrollbar-thumb {
+.support-msgwindow-container__support-msgwindow::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: transparent;
 }
 
-.msgwindow-container__msgwindow:hover::-webkit-scrollbar-thumb {
+.support-msgwindow-container__support-msgwindow:hover::-webkit-scrollbar-thumb {
     background-color: var( --global-scrollbar-color);
     -webkit-box-shadow: inset 0 0 2px var(--global-darkgrey-color);
 }
