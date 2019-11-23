@@ -59,7 +59,7 @@ function userWebSocketOnMessage(event) {
 	switch (message.event_type) {
 		case 1:
 			const mainPage = componentsStorage.getMainPage();
-			mainPage.renderIncomingMessage(messageContent);
+			mainPage.renderNewMessage(messageContent);
 			break;
 		default:
 			console.log('error in websocket');

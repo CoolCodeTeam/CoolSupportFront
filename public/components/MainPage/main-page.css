@@ -12,8 +12,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 40vh; /*experimenting with viewports*/
-    width: 30vh;
+    height: 100vh; /*experimenting with viewports*/
+    width: 100vw;
 }
 
 .main-page__container_style {

@@ -1,4 +1,6 @@
 import BaseComponent from "../baseComponent";
+import {bus, componentsStorage, data} from "../../main";
+
 
 const rightMsg = require('./msgRight.pug');
 const leftMsg = require('./msgLeft.pug');
@@ -90,10 +92,10 @@ class ChatMessageComponent extends BaseComponent {
 
 
 	render() {
-		if (data.getIsSupport() == 0) {
-			return renderNotSupport();
+		if (data.getIsSupport() == 1) {
+			return this.renderNotSupport();
 		} else {
-			return renderSupport();
+			return this.renderSupport();
 		}
 	}
 }

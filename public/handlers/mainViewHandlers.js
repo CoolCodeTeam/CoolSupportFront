@@ -35,7 +35,7 @@ async function sendMessageEventSupport() {
         console.log(`new message : ${text}`);
         mainPage.setMessageInputData('');
         try {
-            const messageId = await sendingMessage(text, '', data.getCurrentChatId());
+            const messageId = await sendingMessage(text, '02.01.2006 15:04', data.getCurrentChatId());
         } catch (error) {
 
         }

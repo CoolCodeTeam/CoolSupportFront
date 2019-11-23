@@ -1,9 +1,14 @@
 import {data, FetchModule} from "../main";
 import {userWebSocketOnMessage} from "../handlers/webSocketHandlers";
-import {API, responseStatuses} from "../constants/config";
+import {API, responseStatuses, settings} from "../constants/config";
+import {getChats, getCurrentChatMessages, getUserInfo} from "./gettingInfo";
+import {webSocketOnMessage} from "../handlers/webSocketHandlers";
+import sendingMessage from "./messagesInteraction";
+const {backend} = settings;
+const {backendPort} = settings;
 
 async function getSupportChat() {
-    console.log(` Getting chat ${id} `);
+    console.log(` Getting chat `);
     try {
         let response = await FetchModule._doGet(
             {path: API.supportChat}
@@ -13,7 +18,9 @@ async function getSupportChat() {
                 `Couldn't fetch user chats: ${responseStatuses[response.status]}`);
         }
         let id = await response.json();
-        return id;
+        data.setCurrentChat(id);
+        data.setCurrentChatId(id.ID);
+        return id.ID;
     } catch (error) {
         console.error(error);
     }
