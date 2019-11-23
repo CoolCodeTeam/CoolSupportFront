@@ -9,6 +9,7 @@ const {connection} = settings;
 
 import './components/main.css';
 import mainPageView from "./views/mainPageView";
+import loginView from "./views/loginView";
 
 const application = document.getElementById('application');
 const baseBlock = document.createElement('div');
@@ -19,6 +20,7 @@ const FetchModule = new Fetch();
 FetchModule.setUrl(`${connection}://${backend}${backendPort}`);
 
 router.register(ROUTER.mainPage, mainPageView, KEYWORDS.mainPage);
+router.register(ROUTER.login, loginView, KEYWORDS.login);
 router.start();
 
 export {router, FetchModule};
