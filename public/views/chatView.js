@@ -1,7 +1,4 @@
 import BaseView from './baseView';
-
-import {createSearchInputHndlr} from "../handlers/searchFormHandlers";
-import {data, bus, router, promiseMaker, componentsStorage, appLocalStorage} from "../main";
 import {chooseChat, creatingChats, fetchUserInfo} from "../backendDataFetchers/websockets";
 import ChatsColumnComponent from "../components/ChatsColumn/ChatsColumnComponent";
 import ChatComponent from "../components/ChatBlock/ChatComponent";
@@ -18,7 +15,6 @@ import {
 	createWrkspaceBlockExpandHndlr,
 	createWrkspaceBlockHndlr
 } from "../handlers/chatsBlockHandlers";
-import {saveUserPhoto} from "../handlers/photosHandlers";
 import {getCurrentChatInfo} from "../backendDataFetchers/gettingInfo";
 import {checkLogin} from "../backendDataFetchers/auth";
 
@@ -58,14 +54,8 @@ class chatView extends BaseView {
 		}
 	}
 
-	show(...args) {
-		checkLogin().then(() => {
-			if (!data.getLoggedIn()) router.go('mainPageView');
-			creatingChats(this._parent).then(() => {
-				this.findUser(args);
-			});
-		});
-		console.log('show: chat page');
+	show() {
+		this.render();
 	}
 
 	drawBasics() {
@@ -75,14 +65,14 @@ class chatView extends BaseView {
 
 	drawLeftColumn() {
 		let leftColumn = new ChatsColumnComponent(this._data, this._parent);
-    	this._parent.querySelector('.column_left').innerHTML += leftColumn.render();
+    	this._parent.querySelector('column.column_left.column_left-outlined').innerHTML += leftColumn.render();
     	leftColumn.renderChatsContent();
 		componentsStorage.setLeftColumn(leftColumn);
 	}
 
 	drawRightColumn() {
 		let chatBlock = new ChatComponent(this._data, this._parent);
-		this._parent.querySelector('.column_right').innerHTML += chatBlock.render();
+		this._parent.querySelector('.column.column_left.column_left-outlined').innerHTML += chatBlock.render();
 		chatBlock.renderContent();
 		componentsStorage.setChatBlock(chatBlock);
 

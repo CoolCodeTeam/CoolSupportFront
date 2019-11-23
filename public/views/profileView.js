@@ -1,6 +1,8 @@
 import BaseView from "./baseView";
 import ProfilePageComponent from "../components/ProfilePage/profilePageComponent";
 import BasicsComponent from "../components/Basics/basicsComponent";
+import ChatsColumnComponent from "../components/ChatsColumn/ChatsColumnComponent";
+import ChatComponent from "../components/ChatBlock/ChatComponent";
 
 class profileView extends BaseView {
     constructor (data, parent) {
@@ -57,6 +59,12 @@ class profileView extends BaseView {
         this._parent.innerHTML = basics.render();
     }
 
+    drawLeftColumn() {
+        let leftColumn = new ChatsColumnComponent(this._data, this._parent);
+        this._parent.querySelector('column.column_left.column_left-outlined').innerHTML += leftColumn.render();
+        leftColumn.renderChatsContent();
+    }
+
     render() {
         // let profileBlock = componentsStorage.getRightColumn();
         // if (!profileBlock || !(profileBlock instanceof ProfilePageComponent)) {
@@ -65,6 +73,7 @@ class profileView extends BaseView {
         // }
         // this.drawRightColumn(profileBlock);
         this.drawBasics();
+        //this.drawLeftColumn();
         let profile = new ProfilePageComponent(this._data, this._parent);
         this._parent.querySelector('.column.column_right.column_right-outlined').innerHTML += profile.render();
     }

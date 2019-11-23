@@ -1,6 +1,5 @@
 import ChatsColumnComponent from "../components/ChatsColumn/ChatsColumnComponent";
 import ChatComponent from "../components/ChatBlock/ChatComponent";
-import ChannelComponent from "../components/ChannelBlock/ChannelComponent";
 import ProfilePageComponent from "../components/ProfilePage/profilePageComponent";
 
 class ComponentsStorage {

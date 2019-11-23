@@ -1,7 +1,6 @@
 import {sendingMessage, deletingMessage, editingMessage} from "../backendDataFetchers/messagesInteraction";
 import {componentsStorage, data, bus} from "../main";
 import {keys} from "../constants/config";
-import currentDate from "../modules/currentDate";
 
 
 
@@ -37,7 +36,6 @@ async function sendMessageEvent() {
 	if (text !== '') {
 		console.log(`new message : ${text}`);
 		chatBlock.setMessageInputData('');
-		const date = new currentDate();
 		try {
 			const messageId = await sendingMessage(text, date.getDate(), data.getCurrentChatId());
 			chatBlock.renderOutgoingMessage({id: messageId, author_id : data.getUserId(), text: text, message_time: date.getDate()});
