@@ -3,15 +3,9 @@ block page
         div.chat-header
             div.chat-header__info-row.chat-header__info-row_style
                 div.chat-header__info-row__image-row
-                    div.chat-header__info-row__image-row__loader.chat-header__info-row__image-row__loader_style
-                    img.chat-header__info-row__image-row__image.chat-header__info-row__image-row__image_style(src='/' + chatUserPhoto)
                 div.chat-header__info-row__info-column
-                    div.chat-header__info-row__info-column__name-row.chat-header__info-row__info-column__name-row_style #{currentChat.Name}
+                    div.chat-header__info-row__info-column__name-row.chat-header__info-row__info-column__name-row_style #{currentChat.ID}
                     div.chat-header__info-row__info-column__status-row.chat-header__info-row__info-column__status-row_style last seen..
-            if Object.keys(importantMessage).length !== 0
-                div.chat-header__pinned-message.chat-header__pinned-message_style
-                    div.chat-header__pinned-message__content.chat-header__pinned-message__content_style=importantMessage.text
-                    img.chat-header__pinned-message__icon.chat-header__pinned-message__icon_style(src="/images/pinned.png")
         div.chat-column-main
             div.typing-block
                 div.msgwindow-container.msgwindow-container__style

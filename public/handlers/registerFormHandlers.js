@@ -34,17 +34,18 @@ async function createLoginEvent(params = {form: null}) {
 		return;
 	}
 	const result = await login(emailField.value, passwordField.value);
-	if (result) {
-		bus.emit('showError', null, `.${errorSelector}`, result.message);
-		bus.emit('addErrorStyle', null, emailField, `${textSelector}_error`);
-		bus.emit('addErrorStyle', null, passwordField, `${textSelector}_error`);
-		return null;
-	} else {
-		bus.emit('hideError', null, `.${errorSelector}`);
-		bus.emit('removeErrorStyle', null, emailField, `${textSelector}`);
-		bus.emit('removeErrorStyle', null, passwordField, `${textSelector}`);
-		router.go('profileView');
-	}
+	router.go('profileView');
+	// if (result) {
+	// 	bus.emit('showError', null, `.${errorSelector}`, result.message);
+	// 	bus.emit('addErrorStyle', null, emailField, `${textSelector}_error`);
+	// 	bus.emit('addErrorStyle', null, passwordField, `${textSelector}_error`);
+	// 	return null;
+	// } else {
+	// 	bus.emit('hideError', null, `.${errorSelector}`);
+	// 	bus.emit('removeErrorStyle', null, emailField, `${textSelector}`);
+	// 	bus.emit('removeErrorStyle', null, passwordField, `${textSelector}`);
+	// 	router.go('profileView');
+	// }
 }
 
 async function createSignUpEvent(params = {form: null}) {

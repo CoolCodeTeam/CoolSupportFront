@@ -1,4 +1,4 @@
-import {bus, FetchModule} from "../main";
+import {bus, FetchModule, data} from "../main";
 import {API} from "../constants/config";
 
 async function checkLogin () {
@@ -12,8 +12,7 @@ async function checkLogin () {
 			break;
 		case 200:
 			const user = await response.json();
-			bus.emit('setUser', null, user);
-			bus.emit('setLSUser', null, user);
+			data.setUser(user);
 			break;
 		default:
 			throw new Error(

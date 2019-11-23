@@ -1,6 +1,6 @@
 import BaseView from './baseView';
 import MainPageComponent from "../components/MainPage/mainPageComponent";
-import {componentsStorage} from "../main";
+import {componentsStorage, data} from "../main";
 import {userWebsocket} from "../backendDataFetchers/ordinaryUser";
 import {createMessageInputHndlr, createSendMessageBtnHndlr} from "../handlers/chatViewHandlers";
 import {createChatBlockHndlr} from "../handlers/chatsBlockHandlers";
@@ -19,9 +19,10 @@ class mainPageView extends BaseView {
     setContent() {
     }
 
-    show() {
-        //getSupportChat();
-        //userWebsocket(chatId);
+    async show() {
+        const chatId = await getSupportChat();
+        userWebsocket(chatId);
+        data.setIsSupport(0);
         this.render();
         this.setEvents();
     }

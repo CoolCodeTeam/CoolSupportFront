@@ -36,11 +36,11 @@ function createWebsocketConn(chatId) {
 
 async function openWebSocketConnections() {
 	if (data.getSocketConnection() === false) {
-		const chatUsersWChatID = data.getChatUsersWChatIDs();
-		for (const chat of chatUsersWChatID) {
-			await promiseMaker.createPromise('createWebsocketConn', chat.chatId);
+		const chats = data.getUserChats();
+		for (const chat of chats) {
+			await createWebsocketConn(chat.ID);
 		}
-		await promiseMaker.createPromise('setSocketConnection', true);
+		await data.setSocketConnection(true);
 	}
 }
 

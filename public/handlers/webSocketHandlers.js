@@ -6,12 +6,12 @@ function webSocketOnMessage(event) {
 	const messageContent = message.body;
 	switch (message.event_type) {
 	case 1:
-		switch (messageContent.author_id) {
-		case data.getCurrentChatUserId():
+		switch (messageContent.is_support) {
+		case true:
 			const chatBlock = componentsStorage.getChatBlock();
 			chatBlock.renderCurrentChatIncomingMessage(messageContent);
 			break;
-		case data.getUserId():
+		case false:
 			console.log(`my message sent: ${messageContent.text}`);
 			break;
 		default:

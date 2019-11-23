@@ -7,8 +7,8 @@ class MessageComponent extends BaseComponent {
 	render() {
 		const message = document.createElement('div');
 		message.className = 'chat-block chat-block_style';
-		message.innerHTML = msgTempl({id: data.getCurrentChatId()});
-		message.id = "chat-" + data.getCurrentChatId();
+		message.innerHTML = msgTempl({id: this._data.ID});
+		message.id = "chat-" + this._data.ID;
 		return message;
 	}
 }

@@ -1,4 +1,4 @@
-import {bus, FetchModule, promiseMaker, router} from "../main";
+import {bus, FetchModule, promiseMaker, router, data} from "../main";
 import {API, responseStatuses} from "../constants/config";
 import {showError} from "../handlers/errorHandlers";
 
@@ -17,7 +17,7 @@ async function login(email, password) {
 			);
 		case 200:
 			const user = await response.json();
-			await promiseMaker.createPromise('setUser', user);
+			data.setUser(user);
 			return null;
 		default:
 			return new Error(

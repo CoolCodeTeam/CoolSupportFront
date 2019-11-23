@@ -45,11 +45,11 @@ class ChatMessageComponent extends BaseComponent {
 		this.messageElement.innerHTML = rightMsg(this._data.message);
 	}
 
-	renderNotSupport() {
+	renderSupport() {
 		if (this._data.message) {
 			this._data.message.message_time = this._data.message.message_time.split(' ')[1];
 			this.createMessage();
-			if (this._data.message.is_support == 0) {
+			if (this._data.message.is_support == false) {
 					this.renderRight();
 				} else {
 					this.renderLeft();
@@ -59,7 +59,7 @@ class ChatMessageComponent extends BaseComponent {
 		}
 
 
-	renderSupport() {
+	renderNotSupport() {
 		if (this._data.message) {
 			this._data.message.message_time = this._data.message.message_time.split(' ')[1];
 			this.createMessage();

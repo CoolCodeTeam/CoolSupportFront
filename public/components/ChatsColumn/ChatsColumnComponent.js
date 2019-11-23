@@ -1,7 +1,6 @@
 import BaseComponent from "../baseComponent";
 import {data, bus, router} from "../../main";
 import ChatsBlockComponent from "./ChatsBlock/ChatsBlockComponent";
-
 const chatsColumnTemplate = require('./chatsColumn.pug');
 
 import './bemAllChats/bem-all-chats.css';

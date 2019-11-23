@@ -1,6 +1,8 @@
 import ChatsColumnComponent from "../components/ChatsColumn/ChatsColumnComponent";
 import ChatComponent from "../components/ChatBlock/ChatComponent";
 
+import ProfilePageComponent from "../components/ProfilePage/profilePageComponent";
+
 class ComponentsStorage {
 	constructor(leftColumn = null, mainPage = null, chatBlock = null, typingBl, rightColumn = null, profileBlock = null) {
 		if (ComponentsStorage.__instance) {

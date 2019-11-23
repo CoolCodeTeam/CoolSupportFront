@@ -64,9 +64,8 @@ async function getCurrentChatMessages(chatId) {
 			throw new Error(
 				`Couldn't fetch messages: ${responseStatuses[response.status]}`);
 		}
-		const data = await response.json();
-		bus.emit('setChatMessages', null, data['Messages']);
-		appLocalStorage.setChatMessages(data['Messages'], chatId);
+		const dataa = await response.json();
+		data.setCurrentChatMessages(dataa['Messages']);
 	} catch (error) {
 		console.error(error);
 	}
@@ -83,9 +82,7 @@ async function getChats(id) {
 				`Couldn't fetch user chats: ${responseStatuses[response.status]}`);
 		}
 		let chats = await response.json();
-		await promiseMaker.createPromise('setUserChats', chats['Chats']);
-		await promiseMaker.createPromise('setUserWrkSpaces', chats['Workspaces']);
-		bus.emit('setLSChats', null);
+		data.setUserChats(chats['Chats']);
 
 	} catch (error) {
 		console.error(error);
@@ -122,12 +119,9 @@ async function getWrkspaceCreatorInfo(id) {
 	}
 }
 
-async function getCurrentChatInfo(userId, chatId) {
-	await getUserInfo(userId);
-	bus.emit('setChatMessages', null, appLocalStorage.getChatMessages(chatId));
-	console.log(data.getCurrentChatMessages());
+async function getCurrentChatInfo(chatId) {
 	await getCurrentChatMessages(chatId);
-	bus.emit('setCurrentChatId', null, chatId);
+	data.setCurrentChatId(chatId);
 }
 
 export {getCurrentChatMessages, getChats, getUserInfo, getCurrentChatInfo, getPhoto, getWrkspaceInfo, getWrkspaceCreatorInfo, getChannelInfo};

@@ -36,13 +36,12 @@ async function sendMessageEvent() {
 	if (text !== '') {
 		console.log(`new message : ${text}`);
 		chatBlock.setMessageInputData('');
-		const date = new currentDate();
 		try {
-			const messageId = await sendingMessage(text, date.getDate(), data.getCurrentChatId());
-			chatBlock.renderOutgoingMessage({id: messageId, author_id : data.getUserId(), text: text, message_time: date.getDate()});
+			const messageId = await sendingMessage(text, '12.04.2019 13:12', data.getCurrentChatId());
+			chatBlock.renderOutgoingMessage({id: messageId, author_id : data.getUserId(), text: text, message_time: '12.04.2019 13:12'});
 
 		} catch (error) {
-			chatBlock.renderErrorOutgoingMessage({author_id : data.getUserId(), text: text, message_time: date});
+			chatBlock.renderErrorOutgoingMessage({author_id : data.getUserId(), text: text, message_time: '12.04.2019 13:12'});
 		}
 
 	}

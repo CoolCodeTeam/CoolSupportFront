@@ -1,6 +1,5 @@
 import BaseView from './baseView';
-
-import {data, bus, router, promiseMaker, componentsStorage, appLocalStorage} from "../main";
+import {bus, componentsStorage, data, router} from "../main";
 import {chooseChat, creatingChats, fetchUserInfo} from "../backendDataFetchers/websockets";
 import ChatsColumnComponent from "../components/ChatsColumn/ChatsColumnComponent";
 import ChatComponent from "../components/ChatBlock/ChatComponent";
@@ -35,6 +34,7 @@ class chatView extends BaseView {
 	}
 
 	setContent() {
+		data.setIsSupport(1);
     	this._data.user = data.getUser();
     	this._data.loggedIn = data.getLoggedIn();
 		this._data.chatUser = data.getCurrentChatUser();
@@ -44,26 +44,26 @@ class chatView extends BaseView {
 	}
 
 	findUser(chatId) {
-		let chatUser = data.getChatUserIdByChatId(chatId);
-		if (chatUser) {
-			getCurrentChatInfo(chatUser, chatId).then(() => {
+
+			getCurrentChatInfo(chatId).then(() => {
 				this.setContent();
 				this.render();
 				this.setEvents();
 			});
-		} else {
-			router.go('profileView');
-		}
 	}
 
-	show(...args) {
-		checkLogin().then(() => {
+	show(args) {
+		console.log(args);
+		checkLogin().then(()=>{
 			if (!data.getLoggedIn()) router.go('mainPageView');
-			creatingChats(this._parent).then(() => {
-				this.findUser(args);
-			});
+			else {
+				creatingChats(this._parent).then(() => {
+					this.findUser(args[0]);
+
+				});
+			}
 		});
-		console.log('show: chat page');
+		console.log('show: chat');
 	}
 
 	drawBasics() {
@@ -73,14 +73,14 @@ class chatView extends BaseView {
 
 	drawLeftColumn() {
 		let leftColumn = new ChatsColumnComponent(this._data, this._parent);
-    	this._parent.querySelector('.column_left').innerHTML += leftColumn.render();
+    	this._parent.querySelector('.column.column_left.column_left-outlined').innerHTML += leftColumn.render();
     	leftColumn.renderChatsContent();
 		componentsStorage.setLeftColumn(leftColumn);
 	}
 
 	drawRightColumn() {
 		let chatBlock = new ChatComponent(this._data, this._parent);
-		this._parent.querySelector('.column_right').innerHTML += chatBlock.render();
+		this._parent.querySelector('.column.column_right.column_right-outlined').innerHTML += chatBlock.render();
 		chatBlock.renderContent();
 		componentsStorage.setChatBlock(chatBlock);
 

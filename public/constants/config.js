@@ -11,7 +11,7 @@ const responseStatuses = {
 const settings = {
     connection : 'http',
     frontendPort : ':3000',
-    backendPort : ':8080',
+    backendPort : ':8081',
     frontend: 'https://boiling-chamber-90136.herokuapp.com',
     //backend: '172.20.10.9:8080',
     backend: '95.163.209.195',
@@ -24,7 +24,7 @@ const keys = {
 };
 
 const API = {
-    supportChat: '/chat',
+    supportChat: '/chats',
     messageInteraction : (id) => {
         return `/messages/${id}`;
     },
