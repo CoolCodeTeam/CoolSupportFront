@@ -4,13 +4,14 @@ const TypingBlockTemplate = require('./typingBlock.pug');
 import './typing-block.css';
 import './messageWindowBlock/message-window.css'
 import './inputBlock/input-block.css'
+import ChatMessageComponent from "../../Message/ChatMessageComponent";
 
 
 class TypingBlockComponent extends BaseComponent {
 
     contentListRootSelector = '.msgwindow-container__msgwindow';
 
-    renderMessage() {
+    renderMessage(message) {
         const contentListRoot = this._parent.querySelector(this.contentListRootSelector);
         const messageComponent = new ChatMessageComponent({message: message, user: this._data.user, error: false, deleted:false}, contentListRoot);
         contentListRoot.appendChild(messageComponent.render());

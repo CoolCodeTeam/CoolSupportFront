@@ -1,7 +1,7 @@
 class Data {
 
     constructor(isSupport, loggedIn, user = {} , userChats = [],
-                currentChatId, currentChat = {}, currentChatUser = {},  currentChatMessages = [],
+                currentChatId, currentChat = {}, currentChatUser = {},  currentChatMessages = [], userSocketConn,
                 webSocketConns = [], socketConnection = false,
                ) {
         if (Data.__instance) {
@@ -19,6 +19,7 @@ class Data {
         this.currentChatMessages = currentChatMessages;
 
         this.webSocketConns = webSocketConns;
+        this.userSocketConn = userSocketConn;
         this.socketConnectionOn = socketConnection;
 
         Data.__instance = this;
@@ -152,6 +153,10 @@ class Data {
     addWebSocketConn(chatId, conn) {
         this.webSocketConns.push({ chatId: chatId,
             connection : conn});
+    }
+
+    addUserSocketConn(conn) {
+        this.userSocketConn = conn;
     }
 
     checkWebsocketConn(chatId) {

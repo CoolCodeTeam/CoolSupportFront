@@ -8,11 +8,16 @@ import TypingBlockComponent from "./typingBlock/typingBlockComponent";
 class MainPageComponent extends BaseComponent {
 
     contentListRootSelector = '.main-page__container';
+    typingBlock;
+
+    renderNewMessage(message) {
+        this.typingBlock.renderMessage(message);
+    }
 
     renderTypingBlock() {
         const contentListRoot = this._parent.querySelector(this.contentListRootSelector);
-        const typingBlock = new TypingBlockComponent(this._data, contentListRoot);
-        contentListRoot.innerHTML+=typingBlock.render();
+        this.typingBlock = new TypingBlockComponent(this._data, contentListRoot);
+        contentListRoot.innerHTML+=this.typingBlock.render();
     }
 
     renderHeader() {
