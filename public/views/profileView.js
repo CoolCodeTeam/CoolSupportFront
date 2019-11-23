@@ -1,5 +1,6 @@
 import BaseView from "./baseView";
 import ProfilePageComponent from "../components/ProfilePage/profilePageComponent";
+import BasicsComponent from "../components/Basics/basicsComponent";
 
 class profileView extends BaseView {
     constructor (data, parent) {
@@ -51,6 +52,11 @@ class profileView extends BaseView {
     //     this._parent.querySelector('.main').innerHTML = profileBlock.render();
     // }
 
+    drawBasics() {
+        let basics = new BasicsComponent(this._data, this._parent);
+        this._parent.innerHTML = basics.render();
+    }
+
     render() {
         // let profileBlock = componentsStorage.getRightColumn();
         // if (!profileBlock || !(profileBlock instanceof ProfilePageComponent)) {
@@ -58,8 +64,9 @@ class profileView extends BaseView {
         //     profileBlock = new ProfilePageComponent(this._data.user, this._parent);
         // }
         // this.drawRightColumn(profileBlock);
+        this.drawBasics();
         let profile = new ProfilePageComponent(this._data, this._parent);
-        this._parent.querySelector('.rightColumn').innerHTML += profile.render();
+        this._parent.querySelector('.column.column_right.column_right-outlined').innerHTML += profile.render();
     }
 
 }
