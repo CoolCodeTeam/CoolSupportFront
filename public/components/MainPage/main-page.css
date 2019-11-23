@@ -1,0 +1,22 @@
+.main-page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /*so everything in one line*/
+    justify-content: center;
+    width: 100vw;
+    height: 100vh; /*header is 5vh*/
+}
+
+.main-page__container {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40vh; /*experimenting with viewports*/
+    width: 30vh;
+}
+
+.main-page__container_style {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
