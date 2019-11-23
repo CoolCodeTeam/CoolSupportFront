@@ -1,5 +1,7 @@
 import BaseView from './baseView';
 import MainPageComponent from "../components/MainPage/mainPageComponent";
+import {componentsStorage} from "../main";
+import {userWebsocket} from "../backendDataFetchers/ordinaryUser";
 
 class mainPageView extends BaseView {
     constructor (data, parent) {
@@ -10,6 +12,8 @@ class mainPageView extends BaseView {
     }
 
     show() {
+        getSupportChat();
+        userWebsocket(chatId);
         this.render();
     }
 
@@ -17,6 +21,7 @@ class mainPageView extends BaseView {
         let mainPage = new MainPageComponent(this._data, this._parent);
         this._parent.querySelector('.main').innerHTML += mainPage.render();
         mainPage.renderContent();
+        componentsStorage.setMainPageColumn(mainPage);
     }
 }
 

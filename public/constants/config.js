@@ -24,6 +24,7 @@ const keys = {
 };
 
 const API = {
+    supportChat: 'support/chat',
     messageInteraction : (id) => {
         return `/messages/${id}`;
     },
