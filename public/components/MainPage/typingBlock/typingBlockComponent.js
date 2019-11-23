@@ -11,6 +11,14 @@ class TypingBlockComponent extends BaseComponent {
 
     contentListRootSelector = '.msgwindow-container__msgwindow';
 
+    getMessageInputData() {
+        return this._parent.querySelector('.input__text').value;
+    }
+
+    setMessageInputData(inputData) {
+        this._parent.querySelector('.input__text').value = inputData;
+    }
+
     renderMessage(message) {
         const contentListRoot = this._parent.querySelector(this.contentListRootSelector);
         const messageComponent = new ChatMessageComponent({message: message, user: this._data.user, error: false, deleted:false}, contentListRoot);

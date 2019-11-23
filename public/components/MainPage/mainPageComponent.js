@@ -14,6 +14,14 @@ class MainPageComponent extends BaseComponent {
         this.typingBlock.renderMessage(message);
     }
 
+    getMessageInputData() {
+        return this.typingBlock.getMessageInputData();
+    }
+
+    setMessageInputData(inputData) {
+        this.typingBlock.setMessageInputData(inputData);
+    }
+
     renderTypingBlock() {
         const contentListRoot = this._parent.querySelector(this.contentListRootSelector);
         this.typingBlock = new TypingBlockComponent(this._data, contentListRoot);
